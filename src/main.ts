@@ -1,4 +1,7 @@
 import { app, BrowserWindow } from 'electron';
+import installExtension, {
+  REACT_DEVELOPER_TOOLS,
+} from 'electron-devtools-installer';
 import path from 'node:path';
 import started from 'electron-squirrel-startup';
 
@@ -6,6 +9,16 @@ import started from 'electron-squirrel-startup';
 if (started) {
   app.quit();
 }
+
+const installReactDevTools = async () => {
+  const react = await installExtension(REACT_DEVELOPER_TOOLS, {
+    loadExtensionOptions: {
+      allowFileAccess: true,
+    },
+  });
+
+  console.log(`Installed extension: ${react.name} (${react.id})`);
+};
 
 const createWindow = () => {
   // Create the browser window.
@@ -30,10 +43,10 @@ const createWindow = () => {
   mainWindow.webContents.openDevTools();
 };
 
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.whenReady().then(async () => {
+  await installReactDevTools();
+  createWindow();
+});
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits

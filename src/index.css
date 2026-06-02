@@ -1,8 +1,142 @@
+:root {
+  color: #161616;
+  background: #f3f0e8;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family:
-    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
-    sans-serif;
-  margin: auto;
-  max-width: 38rem;
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button {
+  border: 1px solid #161616;
+  background: #161616;
+  color: #fffaf0;
+  cursor: pointer;
+  font: inherit;
+  padding: 0.8rem 1rem;
+}
+
+button:hover {
+  background: #2f3f36;
+}
+
+.shell {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
+  max-width: 72rem;
+  min-height: 100vh;
+  padding: 4rem;
+}
+
+.status-panel,
+.counter-card,
+.checklist {
+  border: 1px solid #161616;
+  background: #fffaf0;
+}
+
+.status-panel {
+  align-content: end;
+  display: grid;
+  min-height: 28rem;
   padding: 2rem;
+}
+
+.eyebrow,
+.counter-label {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(2.4rem, 6vw, 5.6rem);
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 0.95;
+  margin: 1rem 0;
+  max-width: 12ch;
+}
+
+.lede {
+  font-size: 1.1rem;
+  line-height: 1.55;
+  max-width: 42rem;
+}
+
+.version-row {
+  align-items: center;
+  border-top: 1px solid #161616;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+}
+
+.counter-card {
+  align-content: start;
+  display: grid;
+  gap: 1rem;
+  padding: 1.25rem;
+}
+
+.counter-value {
+  font-size: 6rem;
+  line-height: 1;
+}
+
+.counter-card p {
+  margin: 0;
+}
+
+.checklist {
+  display: grid;
+  gap: 0;
+  grid-column: 1 / -1;
+}
+
+.check-item {
+  align-items: center;
+  border-top: 1px solid #161616;
+  display: flex;
+  gap: 0.8rem;
+  padding: 1rem 1.25rem;
+}
+
+.check-item:first-child {
+  border-top: 0;
+}
+
+.check-item span {
+  background: #b7422d;
+  display: block;
+  height: 0.7rem;
+  width: 0.7rem;
+}
+
+.check-item p {
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .shell {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  .status-panel {
+    min-height: auto;
+    padding: 1.25rem;
+  }
 }
